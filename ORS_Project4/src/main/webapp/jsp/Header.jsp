@@ -66,8 +66,6 @@
          <a href="<%=ORSView.CHANGE_PASSWORD_CTL%>">Change Password</b></a> |
        	 <a href="<%=ORSView.GET_MARKSHEET_CTL%>">Get Marksheet</b></a> |              
        	 <a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>">Marksheet MeritList</b></a> |
-         <a href="<%=ORSView.BANK_CTL%>">BANK</b></a> | 
-        <a href="<%=ORSView.BANK_LIST_CTL%>">BANK_LIST</a>  |
          
         <%
             if (userBean.getRoleId() == RoleBean.ADMIN) {
@@ -92,6 +90,11 @@
         <a href="<%=ORSView.FACULTY_LIST_CTL %>">Faculty List</b></a> |
         <a href="<%=ORSView.TIMETABLE_CTL %>" >Add TimeTable</b></a> |       
         <a href="<%=ORSView.TIMETABLE_LIST_CTL %>">TimeTable List</b></a> |
+        
+        <a href="<%=ORSView.CUSTOMER_CTL%>">Add Customer</b></a> |
+        <a href="<%=ORSView.CUSTOMER_LIST_CTL%>">Customer List</b></a> |
+     
+        
         <a target="blank" href="<%=ORSView.JAVA_DOC_VIEW%>">Java Doc</b></a> |
        <%
      		}

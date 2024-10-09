@@ -49,11 +49,9 @@ public interface ORSView {
 		 public String TIMETABLE_LIST_VIEW = PAGE_FOLDER + "/TimeTableListView.jsp";
 		 public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";
 		 //   public String ERROR_VIEW5 = PAGE_FOLDER + "/ErrorView5.jsp";
-		    
-		 public String BANK_VIEW = PAGE_FOLDER + "/BankView.jsp";  
-		 public String BANK_CTL = APP_CONTEXT + "/ctl/BankCtl";
-		 public String BANK_LIST_CTL = APP_CONTEXT + "/ctl/BankListCtl";
-		 public String BANK_LIST_VIEW= PAGE_FOLDER + "/BankListViewss.jsp";
+		 
+		 public String CUSTOMER_LIST_VIEW = PAGE_FOLDER + "/CustomerListView.jsp";
+		 public String CUSTOMER_VIEW = PAGE_FOLDER + "/CustomerView.jsp";
 		 
 		 
 	    public String MARKSHEET_CTL = APP_CONTEXT + "/ctl/MarksheetCtl";
@@ -84,6 +82,11 @@ public interface ORSView {
 		public String SUBJECT_LIST_CTL = APP_CONTEXT + "/ctl/SubjectListCtl";
 		public String TIMETABLE_CTL = APP_CONTEXT + "/ctl/TimeTableCtl";
 	    public String TIMETABLE_LIST_CTL = APP_CONTEXT + "/ctl/TimeTableListCtl";
+	    
+	    public String CUSTOMER_LIST_CTL = APP_CONTEXT + "/ctl/CustomerListCtl";
+		public String CUSTOMER_CTL = APP_CONTEXT + "/ctl/CustomerCtl";
+	   
+	    
 	    public String ERROR_CTL = APP_CONTEXT + "/ErrorCtl";
 	
 }

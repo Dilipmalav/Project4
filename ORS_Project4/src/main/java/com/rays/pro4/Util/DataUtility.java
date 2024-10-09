@@ -16,7 +16,7 @@ public class DataUtility {
 	/**
 	 * Application Date Format          
 	 */
-	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
+	public static final String APP_DATE_FORMAT = "yyyy/MM/dd";
 	//dd/mm/yyyy
 
 	public static final String APP_TIME_FORMAT = "MM/dd/yyyy HH:mm:ss";

@@ -8,6 +8,28 @@ import java.util.Date;
  *
  */
 public class DataValidator {
+	
+	 public static boolean isTooLong(String val, int maxLength) {
+		    if (isNotNull(val)) {
+		        return val.length() > maxLength;
+		    } else {
+		        return false;
+		    }
+	 }
+	 
+	 public static boolean validateAlphanumeric(String input) {
+	        // Check for empty input
+	        if (input == null || input.isEmpty()) {
+	            return false;
+	        }
+
+	        // Check for alphanumeric
+	        if (!input.matches("^[a-zA-Z0-9]+$")) {
+	            return false;
+	        }
+
+	        return true;
+	    }
 
 	public static boolean isNull(String val){
 		if(val==null || val.trim().length()==0){
@@ -63,27 +85,36 @@ public class DataValidator {
 	    }
 
 	
-	public static boolean isDate(String val){
-		Date d=null;
-		if(isNotNull(val)){
-			d=DataUtility.getDate(val);
-		}
-		return d!=null;
-	}
+	  public static boolean isDate(String val){
+		    
+	    	Date today = new Date();
+	    	Date enterDate = DataUtility.getDate(val);
+	    	
+	    	int age = today.getYear() - enterDate.getYear();
+
+	    	if(age > 18 && isNotNull(val)){
+	    		return true;
+	    	}else{
+	    		return false;							
+	    	}
+	    }
+	  
+	
+
+	
 	public static boolean isName(String val) {
+	    // Updated regex to allow for a single letter or more
+	    String namereg = "^[\\p{L} .'-]+$";
 
-		String namereg = "^[^-\\s][\\p{L} .'-]+$";
-
-		if (isNotNull(val)) {
-			try {
-				return val.matches(namereg);
-			} catch (NumberFormatException e) {
-				return false;
-			}
-
-		} else {
-			return false;
-		}
+	    if (isNotNull(val)) {
+	        try {
+	            return val.matches(namereg);
+	        } catch (NumberFormatException e) {
+	            return false;
+	        }
+	    } else {
+	        return false;
+	    }
 	}
 	public static boolean isPassword(String val) {
 
@@ -199,6 +230,7 @@ public class DataValidator {
 	    					
 	    					return false;
 						}	
+	    			
 	    		}
 	 
 	
