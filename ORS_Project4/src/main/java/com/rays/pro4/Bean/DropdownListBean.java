@@ -1,4 +1,6 @@
-package com.rays.pro4.Bean;
+ package com.rays.pro4.Bean;
+
+import java.util.Date;
 
 /**
  * DropdownList interface is implemented by Beans those are used to create drop

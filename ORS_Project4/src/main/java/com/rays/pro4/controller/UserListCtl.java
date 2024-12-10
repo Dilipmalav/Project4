@@ -21,13 +21,13 @@ import com.rays.pro4.Util.ServletUtility;
 
 //TODO: Auto-generated Javadoc
 /**
-* User List functionality Controller. Performs operation for list, search and
-* delete operations of User
-* 
-*  @author Dilip Malav
-*/
+ * User List functionality Controller. Performs operation for list, search and
+ * delete operations of User
+ * 
+ * @author Dilip Malav
+ */
 @WebServlet(name = "UserListCtl", urlPatterns = { "/ctl/UserListCtl" })
-public class UserListCtl extends BaseCtl{
+public class UserListCtl extends BaseCtl {
 
 	private static Logger log = Logger.getLogger(UserListCtl.class);
 
@@ -43,12 +43,13 @@ public class UserListCtl extends BaseCtl{
 		RoleModel rmodel = new RoleModel();
 		UserModel umodel = new UserModel();
 
-		try {
-			List rlist = rmodel.list(0,0);
-			List ulist = umodel.list(0,0);
+		try {	
+			List rlist = rmodel.list();
+
+			List ulist = umodel.list();
 
 			request.setAttribute("RoleList", rlist);
-			request.setAttribute("lastName", ulist);
+			request.setAttribute("dob", ulist);
 
 		} catch (ApplicationException e) {
 			e.printStackTrace();
@@ -60,19 +61,21 @@ public class UserListCtl extends BaseCtl{
 	 * 
 	 * @see in.co.rays.ors.controller.BaseCtl#populateBean(javax.servlet.http.
 	 * HttpServletRequest)
-	 */	
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 		UserBean bean = new UserBean();
 
+		// bean.setGender(DataUtility.getString(request.getParameter("gender")));
+		// bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
-		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
-		bean.setGender(DataUtility.getString(request.getParameter("gender")));
+		// bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
 		bean.setRoleId(DataUtility.getLong(request.getParameter("roleid")));
 		bean.setLogin(DataUtility.getString(request.getParameter("loginid")));
-		bean.setDob(DataUtility.getDate(request.getParameter("dob")));
-
-
+		//bean.setDob(DataUtility.getDate(request.getParameter("dob")));
+	//	bean.setId(DataUtility.getLong(request.getParameter("dob")));
+		
+		
 		return bean;
 	}
 
@@ -82,7 +85,13 @@ public class UserListCtl extends BaseCtl{
 	 * @param request  the request
 	 * @param response the response
 	 * @throws ServletException the servlet exception
-	 * @throws IOException      Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	/**
+	 *
+	 */
+	/**
+	 *
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -99,6 +108,7 @@ public class UserListCtl extends BaseCtl{
 //	        get the selected checkbox ids array for delete list
 
 		// String[] ids = request.getParameterValues("ids");
+
 		UserModel model = new UserModel();
 
 		try {
@@ -110,13 +120,16 @@ public class UserListCtl extends BaseCtl{
 			request.setAttribute("nextlist", nextList.size());
 
 			ServletUtility.setList(list, request);
+
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
 			}
+
 			ServletUtility.setList(list, request);
 			ServletUtility.setPageNo(pageNo, request);
 			ServletUtility.setPageSize(pageSize, request);
-			//ServletUtility.setBean(bean, request);
+			// ServletUtility.setBean(bean, request);
+
 			ServletUtility.forward(getView(), request, response);
 		} catch (ApplicationException e) {
 			log.error(e);
@@ -134,6 +147,7 @@ public class UserListCtl extends BaseCtl{
 	 * @throws ServletException the servlet exception
 	 * @throws IOException      Signals that an I/O exception has occurred.
 	 */
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -148,9 +162,13 @@ public class UserListCtl extends BaseCtl{
 		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
 		String op = DataUtility.getString(request.getParameter("operation"));
+
 		UserBean bean = (UserBean) populateBean(request);
+
 		// get the selected checkbox ids array for delete list
+
 		String[] ids = request.getParameterValues("ids");
+
 		UserModel model = new UserModel();
 
 		if (OP_SEARCH.equalsIgnoreCase(op)) {
@@ -207,7 +225,6 @@ public class UserListCtl extends BaseCtl{
 		ServletUtility.setPageSize(pageSize, request);
 		ServletUtility.forward(getView(), request, response);
 		log.debug("UserListCtl doGet End");
-
 	}
 
 	/*

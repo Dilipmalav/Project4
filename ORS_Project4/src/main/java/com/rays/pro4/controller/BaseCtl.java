@@ -3,6 +3,8 @@
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +19,7 @@ import com.rays.pro4.Util.ServletUtility;
  * Base controller class of project. It contain (1) Generic operations (2)
  * Generic constants (3) Generic work flow
  *
- * @author  Dilip Malav
+ * @author Dilip Malav
  *
  */
 
@@ -64,6 +66,15 @@ public abstract class BaseCtl extends HttpServlet {
 	 * @param request
 	 */
 	protected void preload(HttpServletRequest request) {
+
+	}
+	
+	protected void preload1(HttpServletRequest request) {
+
+	}
+	
+	protected void preload2(HttpServletRequest request) {
+
 	}
 
 	/**
@@ -73,6 +84,7 @@ public abstract class BaseCtl extends HttpServlet {
 	 * @return
 	 */
 	protected BaseBean populateBean(HttpServletRequest request) {
+
 		return null;
 	}
 
@@ -124,33 +136,38 @@ public abstract class BaseCtl extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Bctl service");
+		System.out.println("Bctl ki Service Method ");
 
 		// Load the preloaded data required to display at HTML form
-		preload(request); 
-
-		String op = DataUtility.getString(request.getParameter("operation")); 
-		System.out.println("Bctl servi op" + op);
-		// Check if operation is not DELETE, VIEW, CANCEL, and NULL then
+		preload(request);
+		preload1(request);
+        preload2(request);
+		String op = DataUtility.getString(request.getParameter("operation"));
+		System.out.println("Bctl Mai Operation Get Kiya = " +" "+ op);
+		// Check if operation is not DELETE, VIEW, CANCEL, RESET and NULL then
 		// perform input data validation
 
 		if (DataValidator.isNotNull(op) && !OP_CANCEL.equalsIgnoreCase(op) && !OP_VIEW.equalsIgnoreCase(op)
 				&& !OP_DELETE.equalsIgnoreCase(op) && !OP_RESET.equalsIgnoreCase(op)) {
-			System.out.println("Bctl 5 operation");
+			System.out.println("Bctl Me Condition Check Kri");
 			// Check validation, If fail then send back to page with error
 			// messages
-
 			if (!validate(request)) {
-				System.out.println("Bctl validate ");
-				BaseBean bean = (BaseBean) populateBean(request);
-				//wapis se inserted data dikhe jo phle in put kiya tha 
+				System.out.println("Bctl Me validation Perform Hua ");
+
+			BaseBean bean = (BaseBean) populateBean(request);
+
+				// wapis se inserted data dikhe jo phle in put kiya tha
+
 				ServletUtility.setBean(bean, request);
 				ServletUtility.forward(getView(), request, response);
-				return;
+
+			 return;
 			}
 		}
-		System.out.println("B ctl Super servi");
+		System.out.println("Bctl Ki  Super Service ");
 		super.service(request, response);
+
 	}
 
 	/**
@@ -159,7 +176,5 @@ public abstract class BaseCtl extends HttpServlet {
 	 * @return
 	 */
 	protected abstract String getView();
-	
-	
 
 }

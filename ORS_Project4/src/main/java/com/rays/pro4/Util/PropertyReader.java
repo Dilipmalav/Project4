@@ -47,7 +47,7 @@ public class PropertyReader {
 	 */
 	public static String getValue(String key, String param) {
 		String msg = getValue(key);
-		msg = msg.replace("{0}", param);
+ 		msg = msg.replace("{0}", param);
 		return msg;
 	}
 

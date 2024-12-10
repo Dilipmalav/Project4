@@ -151,12 +151,12 @@ public class ChangePasswordCtl extends BaseCtl{
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-
+        
 		log.debug("ChangePasswordCtl Method doGet Started");
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 
-		// get model
+		// get model      
 		UserModel model = new UserModel();
 
 		UserBean bean = (UserBean) populateBean(request);

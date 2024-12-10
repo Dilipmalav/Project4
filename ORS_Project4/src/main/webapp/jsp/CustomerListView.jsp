@@ -83,18 +83,13 @@
 
 					</td>
 				</div>
-               
-               <div>
-               
+
 				<td align="center"><label>location</font> :
 				</label> <input type="text" name="location" 
 					placeholder="Enter location" 
 					oninput="handleLetterInput(this,'locationError', 20)"
 					onblur="validateLetterInput(this,'locationError', 20)"
 					value="<%=ServletUtility.getParameter("location", request)%>">
-					
-				</div>	
-					
 					<div>
 
 						<td align="center"><label>contactNumber</font>:
@@ -134,7 +129,7 @@
 
 					<th>S.No.</th>
 					<th>Client Name</th>
-					<th>Location</th>
+					<th> Location</th>
 					<th>ContactNumber</th>
 					<th>Importance</th>
 					<th>Edit</th>

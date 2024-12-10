@@ -19,7 +19,7 @@ import com.rays.pro4.controller.ORSView;
  * redirect, handle generic exception, manage success and error message, manage
  * default Bean and List, manage pagination parameters.
  * 
- * @author Dilip Malav
+ * @author Dilip Malav 
  *
  */
 public class ServletUtility {
@@ -37,9 +37,9 @@ public class ServletUtility {
 			throws IOException, ServletException {
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
-	}
+  	}
 
-	/*    *//**
+	/*    
 			 * Forward to Layout View.
 			 *
 			 * @param page     the page
@@ -81,12 +81,11 @@ public class ServletUtility {
 	 */
 	public static void handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		// System.out.println("servlet ulitity error ctl------------>");
+		// System.out.println("servletulitity error ctl------------>");
 		request.setAttribute("exception", e);
 //        response.sendRedirect(ORSView.ERROR_CTL);
 //        
 	}
-
 	/**
 	 * Gets error message from request.
 	 *
@@ -107,7 +106,7 @@ public class ServletUtility {
 	/*    *//**
 			 * returns all input error messages.
 			 *
-			 * @param msg     the msg
+			 * @param msg  the msg
 			 * @param request the request
 			 * @deprecated Use HTMLUtil method instead
 			 */
@@ -143,6 +142,7 @@ public class ServletUtility {
 		} else {
 			return val;
 		}
+	
 	}
 
 	/**
@@ -169,11 +169,11 @@ public class ServletUtility {
 			return val;
 		}
 	}
-
+	
 	/**
 	 * Sets success message to request.
 	 *
-	 * @param msg     the msg
+	 * @param msg  the msgr
 	 * @param request the request
 	 */
 	public static void setSuccessMessage(String msg, HttpServletRequest request) {

@@ -17,7 +17,6 @@ import com.rays.pro4.Exception.ApplicationException;
 import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Exception.RecordNotFoundException;
-import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.EmailBuilder;
 import com.rays.pro4.Util.EmailMessage;
 import com.rays.pro4.Util.EmailUtility;
@@ -67,7 +66,7 @@ public class UserModel {
 		Connection conn = null;
 		int pk = 0;
 
-		UserBean existbean = findByLogin(bean.getLogin());                               
+		UserBean existbean = findByLogin(bean.getLogin());
 		if (existbean != null) {
 			throw new DuplicateRecordException("login Id already exists");
 
@@ -85,8 +84,11 @@ public class UserModel {
 			pstmt.setString(3, bean.getLastName());
 			pstmt.setString(4, bean.getLogin());
 			pstmt.setString(5, bean.getPassword());
+
 			// date of birth caste by sql date
+
 			pstmt.setDate(6, new Date(bean.getDob().getTime()));
+
 			pstmt.setString(7, bean.getMobileNo());
 			pstmt.setLong(8, bean.getRoleId());
 			pstmt.setInt(9, bean.getUnSuccessfulLogin());
@@ -101,7 +103,7 @@ public class UserModel {
 			pstmt.setTimestamp(18, bean.getModifiedDatetime());
 
 			int a = pstmt.executeUpdate();
-			System.out.println(a);
+
 			conn.commit();
 			pstmt.close();
 
@@ -138,7 +140,6 @@ public class UserModel {
 			pstmt.executeUpdate();
 			conn.commit();
 			pstmt.close();
-			
 		} catch (Exception e) {
 			log.error("DataBase Exception", e);
 			try {
@@ -153,7 +154,7 @@ public class UserModel {
 	}
 
 	public UserBean findByLogin(String login) throws ApplicationException {
-		log.debug("Model findByLohin Started");
+		log.debug("Model findByLogin Started");
 		String sql = "SELECT * FROM st_user WHERE login=?";
 		UserBean bean = null;
 		Connection conn = null;
@@ -258,6 +259,7 @@ public class UserModel {
 			pstmt.setString(4, bean.getPassword());
 			pstmt.setDate(5, new java.sql.Date(bean.getDob().getTime()));
 			pstmt.setString(6, bean.getMobileNo());
+
 			pstmt.setLong(7, bean.getRoleId());
 			pstmt.setInt(8, bean.getUnSuccessfulLogin());
 			pstmt.setString(9, bean.getGender());
@@ -294,9 +296,11 @@ public class UserModel {
 
 	public List search(UserBean bean, int pageNo, int pageSize) throws ApplicationException {
 		log.debug("Model Search Start");
-		StringBuffer sql = new StringBuffer("SELECT * FROM st_user WHERE 1=1");
+		StringBuffer sql = new StringBuffer("SELECT * FROM st_user where 1=1 ");
 		if (bean != null) {
+			System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+				System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 				sql.append(" AND FIRST_NAME like '" + bean.getFirstName() + "%'");
 			}
 			if (bean.getLogin() != null && bean.getLogin().length() > 0) {
@@ -308,16 +312,16 @@ public class UserModel {
 			if (bean.getLastName() != null && bean.getLastName().length() > 0) {
 				sql.append(" AND LAST_NAME like '" + bean.getLastName() + "%'");
 			}
-			if (bean.getId() > 0) {
+			if (bean.getId() > 0 ) {
 				sql.append(" AND id = " + bean.getId());
 			}
 
 			if (bean.getPassword() != null && bean.getPassword().length() > 0) {
 				sql.append(" AND PASSWORD like '" + bean.getPassword() + "%'");
 			}
-			if (bean.getDob() != null && bean.getDob().getDate() > 0) {
-				Date d = new Date(bean.getDob().getDate());
-				sql.append(" AND DOB = " + DataUtility.getDateString(d));
+			if (bean.getDob() != null && bean.getDob().getTime() > 0) {
+				Date d = new java.sql.Date(bean.getDob().getTime());
+				sql.append(" AND DOB like '" + d + "%'");
 			}
 			if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0) {
 				sql.append(" AND MOBILE_NO = " + bean.getMobileNo());
@@ -491,6 +495,7 @@ public class UserModel {
 			sql.append(" limit " + pageNo + "," + pageSize);
 		}
 
+		System.out.println("preload........" + sql);
 		Connection conn = null;
 
 		try {
@@ -535,7 +540,7 @@ public class UserModel {
 	public boolean changePassword(Long id, String oldPassword, String newPassword)
 			throws ApplicationException, RecordNotFoundException {
 
-		log.debug("Model chanfwPassword Started");
+		log.debug("Model changePassword Started");
 		boolean flag = false;
 		UserBean beanexist = null;
 
@@ -577,7 +582,6 @@ public class UserModel {
 
 	public long registerUser(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model add Started");
-		
 		long pk = add(bean);
 
 		HashMap<String, String> map = new HashMap<String, String>();

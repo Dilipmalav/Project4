@@ -4,9 +4,9 @@
 
 <web-app>
 	<display-name>Online Result System</display-name>
-	<welcome-file-list>
+	 <welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
+	</welcome-file-list> 
 
 	<error-page>
 		<error-code>404</error-code>

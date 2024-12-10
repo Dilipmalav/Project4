@@ -22,16 +22,13 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="<%=ORSView.APP_CONTEXT%>/js/utilities.js"></script>
 <script>
-$( function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-     
-		yearRange : '1980:2002',
-		dateFormat : 'yy/mm/dd',
-	
-    });
-	});	
+	$(function() {
+		$("#udatee").datepicker({
+			changeMonth : true,
+			changeYear : true,
+			yearRange : '1980:2002',
+		});
+	});
 	function limitInputLength(input, maxLength) {
 		if (input.value.length > maxLength) {
 			input.value = input.value.slice(0, maxLength);
@@ -116,7 +113,7 @@ $( function() {
 					<th style="padding: 1px"></th>
 				</tr>
 				<tr>
-					<th align="left"> Location <span style="color: red">*</span>
+					<th align="left">Client Location <span style="color: red">*</span>
 						:
 					</th>
 					<td><input type="text" name="location"
@@ -133,11 +130,11 @@ $( function() {
 					<td><input type="text" name="contactNumber" 
 						placeholder="Enter contactNumber" size="25"
 						onclick="validatephone(event)" 
-						oninput="handleIntegerInput(this, 'contactNumberError', 10)"
-						onblur="validateIntegerInput(this,'contactNumberError', 10)"
+						oninput="handleIntegerInput(this, 'quantityError', 10)"
+						onblur="validateIntegerInput(this,'quantityError', 10)"
 						value="<%=DataUtility.getStringData(bean.getContactNumber()).equals("0") ? ""
 					: DataUtility.getStringData(bean.getContactNumber())%>">
-						<font color="red" id="contactNumberError"> <%=ServletUtility.getErrorMessage("contactNumber", request)%></font></br>
+						<font color="red" id="quantityError"> <%=ServletUtility.getErrorMessage("contactNumber", request)%></font></br>
 
 						</font></td>
 				</tr>

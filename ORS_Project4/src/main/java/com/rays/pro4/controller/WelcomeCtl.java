@@ -6,51 +6,52 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
-
 import com.rays.pro4.Util.ServletUtility;
 
 /**
- * Welcome functionality Controller. Performs operation for Show Welcome page
- * 
- * @author Dilip Malav
- */
+* Welcome functionality Controller. Performs operation for Show Welcome page
+* 
+*  @author Dilip Malav
+*/
 
 @WebServlet(name = "WelcomeCtl", urlPatterns = { "/WelcomeCtl" })
 public class WelcomeCtl extends BaseCtl {
+	
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+		/** The Constant serialVersionUID. */
+		private static final long serialVersionUID = 1L;
 
-	/** The log. */
-	private static Logger log = Logger.getLogger(WelcomeCtl.class);
+		/** The log. */
+		private static Logger log = Logger.getLogger(WelcomeCtl.class);
 
-	/**
-	 * Contains Display logics.
-	 *
-	 * @param request  the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException      Signals that an I/O exception has occurred.
-	 */
+		/**
+		 * Contains Display logics.
+		 *
+		 * @param request  the request
+		 * @param response the response
+		 * @throws ServletException the servlet exception
+		 * @throws IOException      Signals that an I/O exception has occurred.
+		 */
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		log.debug("WelcomeCtl Method doGet Started");
+		protected void doGet(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			log.debug("WelcomeCtl Method doGet Started");
+  System.out.println("WelcomeCtl Ki DoGet");
+			ServletUtility.forward(getView(), request, response);
 
-		ServletUtility.forward(getView(), request, response);
+			log.debug("WelcomeCtl Method doGet Ended");
+		}
 
-		log.debug("WelcomeCtl Method doGet Ended");
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see in.co.rays.ors.controller.BaseCtl#getView()
+		 */
+		protected String getView() {
+			return ORSView.WELCOME_VIEW;
+		}
+		
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see in.co.rays.ors.controller.BaseCtl#getView()
-	 */
-	protected String getView() {
-		return ORSView.WELCOME_VIEW;
-	}
 
-}

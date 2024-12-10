@@ -32,7 +32,7 @@ public static RoleModel model=new RoleModel();
 		//testFindByPK();
 		//testFindByName();
 		//testSearch();
-		//testList();
+		testList();
 	}	
 		
 		public static void testAdd() throws ParseException {

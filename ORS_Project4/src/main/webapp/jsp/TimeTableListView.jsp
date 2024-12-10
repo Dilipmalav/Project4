@@ -109,10 +109,10 @@
 		<label>Subject Name :</label>
 		<%=HTMLUtility.getList("slist", String.valueOf(bean.getSubjectId()), sList) %>
 		
-		<%-- <label>Exam Date</label>
+		<label>Exam Date</label>
 		<input type="text" name="Exdate" id="abcd" placeholder="Enter Exam Date" <%=ServletUtility.getParameter("Exdate", request) %>>
-				 --%>
-		<%-- 		 
+				
+		 		 
 		<label>Exam Time</label>		 
 	 <%
 		LinkedHashMap<String , String > map1 = new LinkedHashMap<String  ,String >();
@@ -122,7 +122,7 @@
 	
 		String htmlList1 = HTMLUtility.getList("elist", bean.getExamTime(), map1);
 	%>
-	<%=htmlList1 %> --%>
+	<%=htmlList1 %> 
 	
 	
 	

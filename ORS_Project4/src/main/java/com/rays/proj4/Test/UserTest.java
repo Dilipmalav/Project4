@@ -22,7 +22,7 @@ import com.rays.pro4.Model.UserModel;
 public class UserTest {
 
 	public static void main(String[] args) throws ApplicationException, DuplicateRecordException {
-		// testInsert();
+		 //testInsert();
 		// testDelete();
 		// testLogin();
 		// testFindByPk();
@@ -30,7 +30,7 @@ public class UserTest {
 		//testSearch();
 		// getRoleid();
 		// getList();
-		//authenticate();
+		authenticate();
 	}
 
 	private static void authenticate() {

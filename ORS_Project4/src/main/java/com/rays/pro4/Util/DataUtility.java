@@ -11,10 +11,18 @@ import java.util.Date;
  *
  */
 
+/**
+ * @author acer
+ *
+ */
+/**
+ * @author acer
+ *
+ */
 public class DataUtility {
 
 	/**
-	 * Application Date Format          
+	 * Application Date Format
 	 */
 	public static final String APP_DATE_FORMAT = "yyyy/MM/dd";
 	//dd/mm/yyyy
@@ -41,6 +49,38 @@ public class DataUtility {
 			return val;
 		}
 	}
+	
+	/**
+	 * Converts and Object to Double
+	 *
+	 * @param val
+	 * @return
+	 */
+
+	public static String getDoublee(double val) {
+		if(val>0) {
+			return ""+val;
+		}else {
+			return "";
+		}
+	}
+	
+	
+public static double getDouble(String str) {
+    double result = 0.0; // Default value or any meaningful default
+    if (str != null && !str.isEmpty()) {
+        try {
+            result = Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            // Handle the case where parsing fails
+            e.printStackTrace(); // Or log the error
+        } 
+    } else {
+        // Handle the case where str is null or empty
+        // Example: throw an exception, provide a default value, etc.
+    }
+    return result;
+}
 
 	/**
 	 * Converts and Object to String
@@ -158,7 +198,6 @@ public class DataUtility {
 		try {
 			timeStamp = new Timestamp(new Date().getTime());
 		} catch (Exception e) {
-			
 		}
 		return timeStamp;
 

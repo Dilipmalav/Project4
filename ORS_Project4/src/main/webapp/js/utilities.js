@@ -16,22 +16,6 @@ function handleIntegerInput(inputElement, errorElementId, maxLength) {
     inputElement.value = inputElement.value.replace(/^0+(?=\d)/, '').slice(0, maxLength);
 }
 
-function validatephone(event) {
-    const input = event.target;
-    // Remove any non-digit characters (except period)
-    input.value = input.value.replace(/[^0-9.]/g, '');
-    
-    // Check if the input starts with a digit between 1 and 5
-    if (input.value.length > 0 && input.value[0] >= '1' && input.value[0] <= '5') {
-        // Clear the input field
-        input.value = '';
-        // Display an error message in Hinglish
-        messageElement.textContent = 'Phone number should start with 6 to 9. Please enter a valid number.';
-    } else {
-        // Clear the error message if the input is valid
-        messageElement.textContent = '';
-    }
-}
 
 function processNumber(num) {
     if (typeof num === 'number' && !isNaN(num)) {

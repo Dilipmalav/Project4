@@ -1,4 +1,4 @@
-package com.rays.pro4.controller;
+ package com.rays.pro4.controller;
 
 import java.io.IOException;
 
@@ -24,6 +24,8 @@ import com.rays.pro4.Util.ServletUtility;
  * 
  * @author Dilip Malav
  */
+
+
 @WebFilter(filterName = "FrontCtl", urlPatterns = { "/ctl/*", "/doc/*" })
 
 public class FrontControler implements Filter {
@@ -44,18 +46,21 @@ public class FrontControler implements Filter {
 
 		if (session.getAttribute("user") == null) {
 			// request.setAttribute("message", " Your Session has been Expired... Please
-			// Login Again");
+			// Login Again"); 
 			ServletUtility.setErrorMessage(" Your Session has been Expired... Please Login Again", request);
+			
 			// Set the URI
 
 			String uri = request.getRequestURI();
 			request.setAttribute("URI", uri);
-			System.out.println("URI" + uri);
+
+			System.out.println("URI  get kiya frontcontroler me" + uri);
 
 			ServletUtility.forward(ORSView.LOGIN_VIEW, request, response);
+
 			return;
 		} else {
-		chain.doFilter(req, resp);
+			chain.doFilter(req, resp);
 		}
 	}
 
@@ -65,7 +70,7 @@ public class FrontControler implements Filter {
 	 * 
 	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
 	 */
-		
+
 	public void init(FilterConfig conf) throws ServletException {
 	}
 

@@ -67,8 +67,10 @@ public class MarksheetListCtl extends BaseCtl {
 		MarksheetBean bean = new MarksheetBean();
 
 		bean.setId(DataUtility.getLong(request.getParameter("rollNo123")));
-		// bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
+	    bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
 		bean.setName(DataUtility.getString(request.getParameter("name")));
+		bean.setTotal(DataUtility.getInt(request.getParameter("total")));
+
 		return bean;
 	}
 

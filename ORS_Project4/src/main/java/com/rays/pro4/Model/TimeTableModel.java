@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -312,10 +313,12 @@ public class TimeTableModel {
 				sql.append("AND subjectName like '" + bean.getSubjectName() + "%'");
 			}
 			if (bean.getExamDate() != null && bean.getExamDate().getTime() > 0) {
-				Date d = new Date(bean.getExamDate().getTime());
-				sql.append("AND Exam_Date = '" + DataUtility.getDateString(d) + "'");
+				Date d = new java.sql.Date(bean.getExamDate().getTime());
+				sql.append("AND Exam_Date like = '" + d + "%'");
 			}
 
+		
+			
 			if (bean.getExamTime() != null && bean.getExamTime().length() > 0) {
 				sql.append("AND EXAM_TIME like '" + bean.getExamTime() + "%'");
 			}

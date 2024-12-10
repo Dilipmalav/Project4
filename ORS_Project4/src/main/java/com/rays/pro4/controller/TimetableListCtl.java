@@ -75,6 +75,7 @@ public class TimetableListCtl extends BaseCtl{
 		//bean.setSubjectName(DataUtility.getString(request.getParameter("slist")));
 		
 		bean.setExamDate(DataUtility.getDate(request.getParameter("Exdate")));
+		
 		bean.setExamTime(DataUtility.getString(request.getParameter("elist")));
 
 	//	System.out.println(request.getParameter("Exdate"));

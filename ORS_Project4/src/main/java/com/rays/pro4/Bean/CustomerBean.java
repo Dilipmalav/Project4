@@ -38,14 +38,16 @@ public class CustomerBean extends BaseBean {
 	public void setImportance(String importance) {
 		this.importance = importance;
 	}
-	
-	 public String getkey() { 
+
+
+	  public String getkey() { 
 		  // TODO Auto-generated method stub
-	  return null;
+	  return id+"";
 	  }
 	  
-   public String getValue() { 
+    public String getValue() { 
 		  // TODO Auto-generated method stub 
-    return null; 
+     return importance; 
 	 }
+
 }

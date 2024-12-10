@@ -123,7 +123,7 @@ System.out.println("do get in");
 		
 		if (id > 0) {
 			CollegeBean bean;
-			try {
+			try { 
 				bean = model.findByPK(id);
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {

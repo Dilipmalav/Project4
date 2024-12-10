@@ -1,4 +1,4 @@
-package com.rays.pro4.controller;
+ package com.rays.pro4.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -163,9 +163,10 @@ public class UserCtl extends BaseCtl {
 		UserBean bean = new UserBean();
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
+	
 
 		bean.setRoleId(DataUtility.getLong(request.getParameter("roleId")));
-
+		
 		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
 
 		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
@@ -199,6 +200,12 @@ public class UserCtl extends BaseCtl {
 	 * javax.servlet.http.HttpServletResponse)
 	 */
 
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		log.debug("UserCtl Method doGet Started");
@@ -212,12 +219,11 @@ public class UserCtl extends BaseCtl {
 			UserBean bean;
 			try {
 				bean = model.findByPK(id);
-				System.out.println("Ankit11111111111");
 				System.out.println(bean);
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				log.error(e);
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response);  
 				return;
 			}
 		}
@@ -241,8 +247,9 @@ public class UserCtl extends BaseCtl {
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 		long id = DataUtility.getLong(request.getParameter("id"));
+		System.out.println(id);
 
-		System.out.println(">>>><<<<>><<><<><<><>**********" + id + op);
+		System.out.println(">>>><<<<>><<><<><>**********" + id + op);
 
 		UserModel model = new UserModel();
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
@@ -251,7 +258,7 @@ public class UserCtl extends BaseCtl {
 
 			try {
 				if (id > 0) {
-
+ 
 					// System.out.println("hi i am in dopost update");
 					model.update(bean);
 					ServletUtility.setBean(bean, request);
@@ -304,6 +311,7 @@ public class UserCtl extends BaseCtl {
 			return;
 		}
 		log.debug("UserCtl Method doPostEnded");
+		
 		ServletUtility.forward(getView(), request, response);
 
 

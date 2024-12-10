@@ -1,4 +1,4 @@
-$(document).ready(function(){
+ $(document).ready(function(){
     $('#select_all').on('click',function(){
         if(this.checked){
             $('.checkbox').each(function(){
@@ -9,7 +9,7 @@ $(document).ready(function(){
                 this.checked = false;
             });
         }
-    });
+    });  
     
     $('.checkbox').on('click',function(){
         if($('.checkbox:checked').length == $('.checkbox').length){
@@ -20,3 +20,4 @@ $(document).ready(function(){
     });
 });
  
+

@@ -54,10 +54,14 @@
                     <input type="text" name="name" placeholder="Enter Student Name" value="<%=ServletUtility.getParameter("name", request)%>">
                     &emsp; 
                     <label>RollNo :</label> 
-                    <%-- <input type="text" name="rollNo" placeholder="Enter Roll Number" value="<%=ServletUtility.getParameter("rollNo", request)%>">
-                    --%>
+                    <input type="text" name="rollNo" placeholder="Enter Roll Number" value="<%=ServletUtility.getParameter("rollNo", request)%>">
+                   
                     <%=HTMLUtility.getList("rollNo123",String.valueOf(bean.getId()),l)%>
                      &nbsp;
+                     
+                      <%-- <label>Total :</font></label> 
+                    <input type="text" name="total" placeholder="Enter total number" value="<%=ServletUtility.getParameter("total", request)%>">
+                    &emsp; --%> 
                     <input type="submit" name="operation" value="<%=MarksheetListCtl.OP_SEARCH %>">
                     
                     <input type="submit" name="operation" value="<%=MarksheetListCtl.OP_RESET %>"></td>
@@ -140,7 +144,7 @@
             </table>
             
             		<%}if(list.size() == 0){ %>
-            		<td align="center"><input type ="submit" name="operation" value="<%=MarksheetListCtl.OP_BACK %>"></td>
+            		<td align="center"><in put type ="submit" name="operation" value="<%=MarksheetListCtl.OP_BACK %>"></td>
             		<%} %>
             
             <input type="hidden" name="pageNo" value="<%=pageNo%>"> <input

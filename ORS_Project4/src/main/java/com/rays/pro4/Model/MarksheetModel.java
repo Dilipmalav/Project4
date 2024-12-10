@@ -31,7 +31,7 @@ public class MarksheetModel {
 		int pk = 0;
 		try {
 			conn = JDBCDataSource.getConnection();
-			System.out.println("Connection Succesfully Establidh");
+			System.out.println("Connection Succesfully Established");
 
 			PreparedStatement pstmt = conn.prepareStatement("select max(ID) from st_marksheet");
 
@@ -292,7 +292,10 @@ public class MarksheetModel {
 			if (bean.getMaths() != null && bean.getMaths() > 0) {
 				sql.append(" AND maths = '" + bean.getMaths());
 			}
-
+			if (bean.getTotal() > 0) {
+				sql.append(" AND (physics + chemistry + maths)= " + bean.getTotal());
+			}
+			
 		}
 
 		// if page size is greater than zero then apply pagination

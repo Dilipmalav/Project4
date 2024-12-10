@@ -10,6 +10,7 @@
 <title>Welcome Page</title>
 </head>
 <body>
+
 	<form action="<%=ORSView.WELCOME_CTL%>">
 	<%@ include file="Header.jsp"%>
 		<h1 align="Center">
@@ -17,6 +18,7 @@
 		</h1>
 
 		<%
+		System.out.println("WelcomeView");
 			UserBean beanUserBean = (UserBean) session.getAttribute("user");
 			if (beanUserBean != null) {
 				if (beanUserBean.getRoleId() == RoleBean.STUDENT) {

@@ -120,15 +120,31 @@ public class UserBean extends BaseBean {
 	public static String getInactive() {
 		return INACTIVE;
 	}
-	public String getkey() {
-		// TODO Auto-generated method stub
-		return lastName;
-	}
-	public String getValue() {
-		// TODO Auto-generated method stub
-		 return lastName;
-	}
 
+
+	  public String getkey() { 
+		  // TODO Auto-generated method stub
+	  return id+"";
+	  }
+	  
+      public String getValue() { 
+		  // TODO Auto-generated method stub 
+       return firstName + " " + lastName; 
+	 }
+	  
+	
+	 
+//	 
+//	
+//	  public String getkey() { 
+//		  // TODO Auto-generated method stub 
+//		  return id+"";
+//	  } public String getValue() { 
+//		  // TODO Auto-generated method stub
+//		  return dob +""; 
+//		  }
+	  
+//	 
 	@Override
 	public String toString() {
 	

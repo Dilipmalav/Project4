@@ -16,7 +16,7 @@ import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.JDBCDataSource;
 
 /**
- * The Class BaseModel
+ * The Class BaseModel 
  * 
  * @author  Dilip Malav
  *

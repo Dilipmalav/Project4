@@ -108,12 +108,12 @@ public class CustomerListCtl extends BaseCtl {
 		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
 		String op = DataUtility.getString(request.getParameter("operation"));
-		CustomerBean bean = (CustomerBean) populateBean(request);
+		System.out.println(DataUtility.getString(request.getParameter("operation")) + "oppppppppppppppppppppppppppppppppppppp");
 		
+		CustomerBean bean = (CustomerBean) populateBean(request);
 
 		String[] ids = request.getParameterValues("ids");
 		CustomerModel model = new CustomerModel();
-		
 		
 		if (OP_SEARCH.equalsIgnoreCase(op)) {
 			

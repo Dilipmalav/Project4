@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.rays.pro4.controller.LoginCtl"%>
 <%@page import="com.rays.pro4.Util.DataUtility"%>
@@ -16,9 +16,10 @@
 
 		<jsp:useBean id="bean" class="com.rays.pro4.Bean.UserBean"
 			scope="request"></jsp:useBean>
+	
 		<%
 			String uri = (String) request.getAttribute("URI");
-			System.out.print("uri in jsp" + uri);
+			/* System.out.print("Uri on jsp " + uri); */
 		%>
 		<input type="hidden" name="URI" value="<%=uri%>">
 		<center>
@@ -32,11 +33,12 @@
 				<font color="green"> <%=ServletUtility.getSuccessMessage(request)%></font>
 			</h2>
 
-			<input type="hidden" name="id" value="<%=bean.getId()%>"> <input
+			<input type="hidden" name="id" value="<%=bean.getId()%>"> 
+			<input
 				type="hidden" name="createdBy" value="<%=bean.getCreatedBy()%>">
+			
 			<input type="hidden" name="modifiedBy"
-				value="<%=bean.getModifiedBy()%>"> <input type="hidden"
-				name="createdDatetime"
+				value="<%=bean.getModifiedBy()%>"> <input type="hidden" name="createdDatetime"
 				value="<%=DataUtility.getTimestamp(bean.getCreatedDatetime())%>">
 			<input type="hidden" name="modifiedDatetime"
 				value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
@@ -46,15 +48,15 @@
 					<th>LoginId <font color="red">*</font></th>
 					<td><input type="text" name="login" size=30
 						placeholder="Enter valid Email-Id"
-						value="<%=DataUtility.getStringData(bean.getLogin())%>"><font
+						 value="<%=DataUtility.getStringData(bean.getLogin())%>"><font
 						style="position: fixed" color="red"> <%=ServletUtility.getErrorMessage("login", request)%></font></td>
 				</tr>
-				<tr>
+								<tr>
 					<th>Password<font color="red">*</font></th>
 					<td><input type="password" name="password" size=30
 						placeholder="Enter Password"
-						value="<%=DataUtility.getStringData(bean.getPassword())%>"><font
-						style="position: fixed" color="red"> <%=ServletUtility.getErrorMessage("password", request)%></font></td>
+						value="<%=DataUtility.getStringData(bean.getPassword())%>">
+						<font style="position: fixed" color="red"> <%=ServletUtility.getErrorMessage("password", request)%></font></td>
 				</tr>
 				<tr>
 					<th></th>

@@ -63,7 +63,7 @@ public class MarksheetCtl extends BaseCtl{
 			pass = false;
 		}
 			else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
-			request.setAttribute("rollNo", "Roll No. Should be in Proper Formate");
+			request.setAttribute("rollNo", "Roll No. Should be in Proper Format");
 			pass = false;
 		}
 	

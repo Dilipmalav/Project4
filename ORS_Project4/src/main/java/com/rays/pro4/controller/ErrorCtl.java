@@ -5,9 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
-
 import com.rays.pro4.Util.ServletUtility;
 
 /**
@@ -28,7 +26,7 @@ public class ErrorCtl extends BaseCtl {
 	 * @param request  the request
 	 * @param response the response
 	 * @throws ServletException the servlet exception
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException      Signals that an I/O exception has occurred.
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +34,7 @@ public class ErrorCtl extends BaseCtl {
 		log.debug("Do get Method of Error Ctl started");
 		// System.out.println("_______________error ctl-_-------->" );
 		ServletUtility.forward(getView(), request, response);
-
+		System.out.println("error doget");
 		log.debug("Do get Method of Error Ctl End");
 
 	}
@@ -52,8 +50,8 @@ public class ErrorCtl extends BaseCtl {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		log.debug("Do Post Method of Error Ctl started");
+		System.out.println("error dopost");
+		log.debug("Do Post Method of Error Ctl started"); //
 		ServletUtility.forward(getView(), request, response);
 		log.debug("Do Post Method of Error Ctl End");
 	}

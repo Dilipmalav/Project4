@@ -12,8 +12,6 @@
     bottom:0;
     background-color:white;
     color:black;
-   
-   
    text-align:center;
 }
 </style>
@@ -25,5 +23,5 @@
     <H3>&copy; Copyrights RAYS Technologies</H3>
 </CENTER>
 </div>
-
+                
 </html>

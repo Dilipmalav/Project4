@@ -4,19 +4,28 @@ import java.util.Date;
 /**
  * This class validates input data.
  * 
- * @author Dilip Malav
+ * @author  Dilip Malav
  *
  */
 public class DataValidator {
 	
-	 public static boolean isTooLong(String val, int maxLength) {
-		    if (isNotNull(val)) {
-		        return val.length() > maxLength;
-		    } else {
-		        return false;
-		    }
-	 }
-	 
+	
+	public static boolean isLetter(String val) {
+
+		String namereg = "^[^-\\s][\\p{L} .'-]+$";
+
+		if (isNotNull(val)) {
+			try {
+				return val.matches(namereg);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+
+		} else {
+			return false;
+		}
+	}
+	
 	 public static boolean validateAlphanumeric(String input) {
 	        // Check for empty input
 	        if (input == null || input.isEmpty()) {
@@ -32,6 +41,7 @@ public class DataValidator {
 	    }
 
 	public static boolean isNull(String val){
+		System.out.println("oooooooooooooooooooooo");
 		if(val==null || val.trim().length()==0){
 			return true;
 		}else{
@@ -54,6 +64,20 @@ public class DataValidator {
 			return false;
 		}
 	}
+	public static boolean isDouble(String val) {
+	    if (isNotNull(val)) {
+	        try {
+	            Double.parseDouble(val);
+	            return true;
+	        } catch (NumberFormatException e) {
+	            return false;
+	        }
+	    } else {
+	        return false;
+	    }
+	}
+
+	
 	public static boolean isLong(String val){
 		if(isNotNull(val)){
 			try{
@@ -85,37 +109,48 @@ public class DataValidator {
 	    }
 
 	
-	  public static boolean isDate(String val){
-		    
-	    	Date today = new Date();
-	    	Date enterDate = DataUtility.getDate(val);
-	    	
-	    	int age = today.getYear() - enterDate.getYear();
+	public static boolean isDate(String val){
+	    
+    	Date today = new Date();
+    	Date enterDate = DataUtility.getDate(val);
+    	
+    	int age = today.getYear() - enterDate.getYear();
 
-	    	if(age > 18 && isNotNull(val)){
-	    		return true;
-	    	}else{
-	    		return false;							
-	    	}
-	    }
-	  
-	
-
-	
+    	if(age > 18 && isNotNull(val)){
+    		return true;
+    	}else{
+    		return false;							
+    	}
+    }
 	public static boolean isName(String val) {
-	    // Updated regex to allow for a single letter or more
-	    String namereg = "^[\\p{L} .'-]+$";
 
-	    if (isNotNull(val)) {
-	        try {
-	            return val.matches(namereg);
-	        } catch (NumberFormatException e) {
-	            return false;
-	        }
-	    } else {
-	        return false;
-	    }
-	}
+		String namereg = "^[^-\\s][\\p{L} .'-]+$";
+
+		if (isNotNull(val)) {
+			try {
+				return val.matches(namereg);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+
+		} else {
+			
+		}
+			return false;
+		}
+	   
+	   
+	 public static boolean isTooLong(String val, int maxLength) {
+		    if (isNotNull(val)) {
+		        return val.length() > maxLength;
+		    } else {
+		        return false;
+		    }
+	 }
+		
+
+
+	
 	public static boolean isPassword(String val) {
 
 		String passreg = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,12}";
@@ -226,11 +261,10 @@ public class DataValidator {
 	    			if (isNotNull(val) && val.matches(mobreg)) {
 						
 							return true;
-	    				}else{
-	    					
+	    				}else
+	    				{	
 	    					return false;
 						}	
-	    			
 	    		}
 	 
 	

@@ -1,4 +1,3 @@
-
 package com.rays.pro4.Util;
 
 /**
@@ -17,8 +16,6 @@ public class EmailMessage {
 	private String from=null;
 	
 	private String cc=null;
-	
-	
 	
 	private String bcc=null;
 	

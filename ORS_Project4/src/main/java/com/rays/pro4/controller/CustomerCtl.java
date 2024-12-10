@@ -37,8 +37,8 @@ public class CustomerCtl extends BaseCtl {
 
 			pass = false;
 		}
-		else if (DataValidator.isTooLong(request.getParameter("clientName"), 20)) {
-			request.setAttribute("clientName", " only 20 digit are allowed ");
+		else if (DataValidator.isTooLong(request.getParameter("clientName"), 15)) {
+			request.setAttribute("clientName", " only 15 letters are allowed ");
 			pass = false;
 		}
 		
@@ -85,6 +85,8 @@ public class CustomerCtl extends BaseCtl {
 
 		bean.setId(DataUtility.getLong(request.getParameter("id")));
 		bean.setClientName(DataUtility.getString(request.getParameter("clientName")));
+		System.out.println(
+				bean.getClientName() + "client aname=============================================================");
 		bean.setLocation(DataUtility.getString(request.getParameter("location")));
 		bean.setContactNumber(DataUtility.getLong(request.getParameter("contactNumber")));
 		bean.setImportance(DataUtility.getString(request.getParameter("importance")));
@@ -124,7 +126,7 @@ public class CustomerCtl extends BaseCtl {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("cus ctl post----------------------------------------------------");
 		String op = DataUtility.getString(request.getParameter("operation"));
 
 		long id = DataUtility.getLong(request.getParameter("id"));
@@ -134,7 +136,7 @@ public class CustomerCtl extends BaseCtl {
 		CustomerModel model = new CustomerModel();
 
 		if (OP_SAVE.equalsIgnoreCase(op) || OP_UPDATE.equalsIgnoreCase(op)) {
-			
+			System.out.println("save op------------------------------------------------------");
 
 			CustomerBean bean = (CustomerBean) populateBean(request);
 
@@ -146,8 +148,8 @@ public class CustomerCtl extends BaseCtl {
 
 					ServletUtility.setSuccessMessage("Customer  is successfully Updated", request);
 				} else {
-				
-				
+					System.out.println(
+							"save ---------------------------------------------------------------------------------");
 					long pk = model.add(bean);
 
 					ServletUtility.setBean(bean, request);
